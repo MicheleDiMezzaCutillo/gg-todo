@@ -40,6 +40,12 @@ public class UserRestController {
             return ResponseEntity.ok("Login successful");
     }
 
+    @GetMapping("/logout")
+    public ResponseEntity<String> logout(HttpSession session) {
+        session.removeAttribute("user");
+        return ResponseEntity.ok("Logout successful");
+    }
+
     @GetMapping("/current")
     public ResponseEntity<User> getCurrentUser(HttpSession session) {
         User currentUser = (User) session.getAttribute("user");
